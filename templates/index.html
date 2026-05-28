@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Market: Қорқыт Ата</title>
+    <style>
+        :root { --primary-color: #003366; --secondary-color: #d4af37; --bg-color: #f4f7f9; }
+        body { font-family: Arial, sans-serif; background-color: var(--bg-color); margin: 0; }
+        header { background-color: var(--primary-color); color: white; padding: 25px; text-align: center; border-bottom: 5px solid var(--secondary-color); }
+        form { background: white; padding: 20px; margin: 20px auto; max-width: 500px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { background-color: var(--primary-color); color: white; padding: 12px; width: 100%; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .book-card { border-left: 6px solid var(--secondary-color); background: white; padding: 15px; margin: 15px auto; max-width: 500px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <header><h1>Қорқыт Ата Университеті</h1></header>
+    
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Кітап аты" required>
+        <input type="text" name="price" placeholder="Бағасы (теңге)">
+        <select name="university">
+            <option value="Қорқыт Ата университеті">Қорқыт Ата университеті</option>
+        </select>
+        <input type="text" name="location" placeholder="Корпус, кабинет">
+        <input type="text" name="phone" placeholder="Телефон нөмірі" required>
+        <button type="submit">Кітапты қосу</button>
+    </form>
+
+    <div>
+        {% for book in books %}
+        <div class="book-card">
+            <h3>{{ book[1] }}</h3>
+            <p>Бағасы: {{ book[2] }}</p>
+            <p>Университет: {{ book[3] }}</p>
+            <p>Локация: {{ book[4] }}</p>
+            <p><strong>Байланыс:</strong> {{ book[5] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
